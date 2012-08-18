@@ -1,0 +1,37 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=4178
+
+DESCRIPTION
+The 'cursorline' setting makes it easy to locate the cursor position. However,
+when there are split windows, each one shows its cursor line, and the only
+indication of the currently active window is the different 'statusline'
+highlighting (with hl-StatusLine vs. hl-StatusLineNC).
+
+This plugin avoids the clutter of multiple highlighted screen lines with split
+windows by disabling the 'cursorline' setting for all but the current window.
+Unlike a simplistic solution with a few autocmds, this plugin still allows for
+exceptions like disabling the cursorline for a particular window or making it
+permanent for (another) window.
+
+RELATED WORKS
+The basic idea is outlined in the Vim Tips Wiki:
+    http://vim.wikia.com/wiki/Highlight_current_line
+
+USAGE
+Globally enable 'cursorline' in your vimrc via
+    :set cursorline
+After sourcing this plugin, 'cursorline' will only be active for the current
+window. So with multiple split windows, only one of them, the one where the
+cursor is in, will have the 'cursorline'.
+
+Disable cursorline for the current window via:
+    :setlocal nocursorline
+This will persist even after moving away and back to the window.
+
+Disable cursorline globally via:
+    :set nocursorline
+As soon as you enter a window, its line highlighting will vanish.
+
+For some kind of files it is helpful to keep the line highlighting active,
+e.g. to serve as a ruler. You can keep the highlighting for a particular
+window by setting a window-local variable:
+    :let w:persistent_cursorline = 1
